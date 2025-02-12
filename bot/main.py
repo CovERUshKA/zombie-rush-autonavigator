@@ -3,6 +3,7 @@ sys.path.append("../")  # root folder
 sys.path.append("../yolo/yolov5")  # yolov5 folder, needed for pretrained model to work
 
 from roblox import screen
+import os
 import cv2
 import time
 import keyboard
@@ -176,6 +177,10 @@ def run():
                 print("Saving screenshot...")
                 sv = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
                 rect = win32gui.GetClientRect(stream.h)
+                try:
+                    os.mkdir(f"images")
+                except FileExistsError:
+                    pass
                 cv2.imwrite(f"images/Screenshot_{rect[2]}x{rect[3]}_{int(time.time())}.png", sv)
                 print("Screenshot saved.")
                 save_key = False
