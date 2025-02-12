@@ -1,8 +1,6 @@
 # All screen and windows related functions
 DEBUG = False
-from PIL import ImageGrab
 import win32gui
-import pywintypes
 import time
 from ctypes import windll
 import psutil
@@ -15,21 +13,11 @@ from datetime import datetime
 import os
 import random
 import string
-import win32con
-import win32process
 import dxcam
-import win32event
 
 # Make program aware of DPI scaling, otherwise values from GetWindowRect will be incorrect
 user32 = windll.user32
 user32.SetProcessDPIAware()
-dc = win32gui.GetDC(0)
-white = win32api.RGB(255, 255, 255)
-
-def drawdot(x,y):
-
-    win32gui.SetPixel(dc, x, y, white)  # draw red at 0,0
-
 
 def getHandleByTitle(title):
     '''Get window handle by exact match of window title'''
@@ -51,14 +39,6 @@ def moveWindow(handle, x, y, width = None, height = None):
 
 def captureWindow(DXCam: dxcam.DXCamera, handle, convert = None, save=None):
     '''bring forth a windpywintypes.errorow and capture'''
-    while True:
-        try:
-            #if not DEBUG:
-                #win32gui.SetForegroundWindow(handle)
-            break
-        except pywintypes.error:
-            #print('Error SetForegroundWindow. Retry..')
-            time.sleep(0.01)
     bbox_window = win32gui.GetWindowRect(handle)
     bbox_client = win32gui.GetClientRect(handle)
     border_size = int((bbox_window[2] - bbox_window[0] - bbox_client[2]) / 2)
@@ -67,17 +47,14 @@ def captureWindow(DXCam: dxcam.DXCamera, handle, convert = None, save=None):
               bbox_window[1] + header_size + border_size,
               bbox_window[2] - border_size,
               bbox_window[3] - border_size]
-    img = DXCam.grab(region, win32event.INFINITE)
-    if img is None:
-        print("Can't grab image")
-    #print(img.shape)
-    #img = ImageGrab.grab(bbox)
-    #img = d.screenshot()
+    while True:
+        img = DXCam.grab(region)
+        if img is not None:
+            break
     if save:
         # new thread to save time
         thread = threading.Thread(target=img.save, args=(save,) )
         thread.start()
-        #img.save(save)
         print('saved an streaming image...')
     img = np.array(img)
     if convert == 'GBR':
@@ -116,14 +93,6 @@ class CaptureStream:
 
         self.h = getHandleByTitle(title)
         moveWindow(self.h, 0, 0, 100, 100)  # put roblex window to left top corner and minimize the window size.
-        #coords = (30, 30)
-
-        #coords = win32api.MAKELONG(coords[0], coords[1])
-        #win32gui.SendMessage(self.h, win32con.WM_MOUSEMOVE, 0, coords)
-        #print("SENDEDEDEDEDEED")
-        #tid = win32process.GetWindowThreadProcessId(self.h)
-        #print("tid =", tid)
-        #win32api.PostThreadMessage(tid[0], win32con.WM_MOUSEMOVE, 0, coords)
         thread = Thread(target=self.update, args=[self.h, self.filename, saveInterval], daemon=True)
         thread.start()
         self.img = None
