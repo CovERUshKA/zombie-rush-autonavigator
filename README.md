@@ -20,3 +20,6 @@ F - Save screenshot to `images` folder for dataset
 
 https://github.com/user-attachments/assets/4e1f92b7-fdad-4da3-9c25-0bb85f5b97ab
 
+
+# Credits
+Andrew Wong for [RobloxBot](https://github.com/andrewssdd/RobloxBot) - bot that collects coins in Murder Mystery 2, used as a base, check it out
