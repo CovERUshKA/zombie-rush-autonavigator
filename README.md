@@ -17,9 +17,7 @@ F - Save screenshot to `images` folder for dataset
 2) Export yolo model using TensorRT to optimize it's execution on GPU
 
 # Preview
-
-https://github.com/user-attachments/assets/4e1f92b7-fdad-4da3-9c25-0bb85f5b97ab
-
+![Preview-ezgif com-cut](https://github.com/user-attachments/assets/5745341b-e7fb-448e-ba9f-a289b229d475)
 
 # Credits
 Andrew Wong for [RobloxBot](https://github.com/andrewssdd/RobloxBot) - bot that collects coins in Murder Mystery 2, used as a base, check it out
