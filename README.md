@@ -13,7 +13,7 @@ R - Resume\
 F - Save screenshot to `images` folder for dataset
 
 # Enhancements that you can make
-1) Tune DXCam to wait for last frame available, and not spam grab. Maybe use BetterCam or some other libraries
+1) You can tune DXCam to wait for last frame available, and not spam grab. Or maybe use BetterCam or some other libraries
 2) Export yolo model using TensorRT to optimize it's execution on GPU
 
 # Preview
