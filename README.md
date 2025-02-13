@@ -1,4 +1,4 @@
-# Zombie Rush Autonavigator
+# Autonavigator for Zombie Rush
 
 This autonavigator automatically set's cursor on position of detected zombies and then you can click to shoot.
 
