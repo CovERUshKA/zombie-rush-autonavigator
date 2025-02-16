@@ -1,22 +1,8 @@
 # Wrapper functions for yolov5
-from .yolov5.models.experimental import attempt_load
 from .yolov5.utils.general import scale_boxes
-
-def loadModel(weights, device):
-    ''' load a yolo model
-        weight: file name of the weights
-        device:
-    '''
-    model = attempt_load(weights, device=device)  # load FP32 model
-    half = device.type != 'cpu'  # half precision only supported on CUDA
-    if half:
-        model.half()
-
-    return model
 
 def processPrediction(pred, img1_shape, img0_shape, names):
     '''
-
     :param pred: predictions from yolo model
     :param img1: image (pytorch)
     :param img0: image (orig numpy)

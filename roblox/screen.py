@@ -6,7 +6,6 @@ from ctypes import windll
 import psutil
 import cv2
 import numpy as np
-import win32api
 import threading
 from threading import Thread, Event
 from datetime import datetime
