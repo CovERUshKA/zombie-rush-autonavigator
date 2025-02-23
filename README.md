@@ -23,7 +23,7 @@ conda activate autonavigator
 ```
 conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1.0
 ```
-3) Install [pytorch](https://pytorch.org/get-started/locally/)
+3) Install [pytorch](https://pytorch.org/get-started/locally/) with cuda
 ```
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
 ```
