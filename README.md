@@ -51,6 +51,7 @@ start.bat
 # Enhancements that you can make
 1) You can tune DXCam to wait for last frame available, and not spam grab. Or maybe use BetterCam or some other libraries
 2) Export yolo model using TensorRT to optimize it's execution on GPU
+3) Add images to dataset and train yolo model on it to make detection more accurate
 
 # Preview
 ![Preview-ezgif com-cut](https://github.com/user-attachments/assets/5745341b-e7fb-448e-ba9f-a289b229d475)
